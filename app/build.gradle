@@ -1,0 +1,157 @@
+/*
+ * Copyright 2018 Google LLC. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion androidCompileSdkVersion as Integer
+    defaultConfig {
+        // The applicationId should be set in the project gradle.properties files.
+        applicationId androidApplicationId
+        minSdkVersion androidMinimumSdkVersion as Integer
+        targetSdkVersion androidTargetSdkVersion as Integer
+        versionCode androidMobileVersionCode as Integer
+        versionName androidMobileVersionName
+        multiDexEnabled true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation":
+                                      "$projectDir/schemas".toString()]
+            }
+        }
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    dataBinding {
+        enabled = true
+    }
+    signingConfigs {
+//      Some of the features in this application require the signing key of the APK
+//      to be registered in the Firebase Console. You can specify debug key information here.
+        debug {
+        }
+        release {
+            storeFile keystoreStoreFile
+            storePassword keystoreStorePassword
+            keyAlias keystoreKeyAlias
+            keyPassword keystoreKeyPassword
+        }
+    }
+    buildTypes {
+        debug {
+//          Some of the features in this application require the signing key of the APK
+//          to be registered in the Firebase Console. You can register your debug key signature
+//          in the Firebase Console and update the `signingConfigs` configuration above.
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "SERVER_URL", "\"https://example.com\"")
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "SERVER_URL", "\"https://example.com\"")
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    // Google Play Billing Library.
+    implementation "com.android.billingclient:billing:$billingVersion"
+
+    // Android Support Library.
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation "com.android.support:design:$supportVersion"
+    implementation "com.android.support:cardview-v7:$supportVersion"
+    implementation "com.android.support:support-v4:$supportVersion"
+    implementation "com.google.code.gson:gson:$gsonVersion"
+    implementation "com.android.support:preference-leanback-v17:$supportVersion"
+
+    // Glide image library.
+    implementation("com.github.bumptech.glide:glide:$glideVersion") {
+        exclude group: "com.android.support"
+    }
+
+    implementation "com.android.support:support-fragment:$fragmentVersion"
+
+    implementation "com.google.android.gms:play-services-auth:$playServicesVersion"
+
+    implementation "androidx.multidex:multidex:$multidex_version"
+
+    // Firebase Bill of Materials
+    implementation platform("com.google.firebase:firebase-bom:$firebaseBomVersion")
+
+    // Declare the dependency for the Firebase Authentication library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
+    implementation 'com.google.firebase:firebase-messaging-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    // FirebaseUI Auth library.
+    implementation "com.firebaseui:firebase-ui-auth:$firebaseUiVersion"
+
+    // Kotlin library.
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+
+
+    implementation "com.google.android.material:material:$materialUiVersion"
+
+    // Kotlin annotation processor for Room.
+    kapt "androidx.room:room-compiler:$androidXRoomVersion"
+
+    // The following rules are for compiling on environments running JDK9+.
+    // In this project, these rules are necessary because data binding is enabled. It fixes the
+    // error 'java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException' that occurs when
+    // the project is assembled through the command line with an environment running JDK9+.
+    compileOnly "com.github.pengrad:jdk9-deps:$jdk9DepsVersion"
+    if (project.hasProperty('kapt')) {
+        kapt "javax.xml.bind:jaxb-api:$jaxbApiVersion"
+        kapt "com.sun.xml.bind:jaxb-core:$jaxbCoreVersion"
+        kapt "com.sun.xml.bind:jaxb-impl:$jaxbImpl"
+    }
+    annotationProcessor "javax.xml.bind:jaxb-api:$jaxbApiVersion"
+    annotationProcessor "com.sun.xml.bind:jaxb-core:$jaxbCoreVersion"
+    annotationProcessor "com.sun.xml.bind:jaxb-impl:$jaxbImpl"
+
+    // Test dependencies.
+    testImplementation "junit:junit:$jUnitVersion"
+
+    // Retrofit dependencies
+    implementation "com.squareup.retrofit2:retrofit:$retrofitSuiteVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitSuiteVersion"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofitSuiteVersion"
+
+    // MultiDex
+    implementation "androidx.multidex:multidex:$multidex_version"
+
+    //Room
+    implementation "androidx.room:room-ktx:$androidXRoomVersion"
+}
+
+apply plugin: 'com.google.gms.google-services'
+
