@@ -22,7 +22,7 @@ import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import nz.co.afleet.taxisubscription.Constants
-import com.example.subscriptions.R
+import nz.co.afleet.taxisubscription.R
 import nz.co.afleet.taxisubscription.data.ContentResource
 import nz.co.afleet.taxisubscription.data.SubscriptionStatus
 import nz.co.afleet.taxisubscription.utils.basicTextForSubscription

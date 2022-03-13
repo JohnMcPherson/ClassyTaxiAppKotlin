@@ -17,7 +17,7 @@
 package nz.co.afleet.taxisubscription.utils
 
 import android.content.res.Resources
-import com.example.subscriptions.R
+import nz.co.afleet.taxisubscription.R
 import nz.co.afleet.taxisubscription.billing.isAccountHold
 import nz.co.afleet.taxisubscription.billing.isBasicContent
 import nz.co.afleet.taxisubscription.billing.isGracePeriod

@@ -42,7 +42,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
-import com.example.subscriptions.R
+import nz.co.afleet.taxisubscription.R
 import nz.co.afleet.taxisubscription.billing.isAccountHold
 import nz.co.afleet.taxisubscription.billing.isBasicContent
 import nz.co.afleet.taxisubscription.billing.isGracePeriod

@@ -20,7 +20,7 @@ import android.text.TextUtils
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.subscriptions.BuildConfig.SERVER_URL
+import nz.co.afleet.taxisubscription.BuildConfig.SERVER_URL
 import nz.co.afleet.taxisubscription.data.ContentResource
 import nz.co.afleet.taxisubscription.data.SubscriptionStatus
 import nz.co.afleet.taxisubscription.data.SubscriptionStatusList
@@ -190,10 +190,10 @@ class ServerFunctionsImpl : ServerFunctions {
 
 // Helper functions
     /**
-     * Inserts or updates the subscription to the list of existing com.example.subscriptions.
+     * Inserts or updates the subscription to the list of existing nz.co.afleet.taxisubscription.
      *
      *
-     * If none of the existing com.example.subscriptions have a SKU that matches, insert this SKU.
+     * If none of the existing nz.co.afleet.taxisubscription have a SKU that matches, insert this SKU.
      * If a subscription exists with the matching SKU, the output list will contain the new
      * subscription instead of the old subscription.
      */

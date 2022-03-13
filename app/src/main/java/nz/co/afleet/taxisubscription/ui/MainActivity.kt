@@ -29,7 +29,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.ViewModelProviders
 import com.android.billingclient.api.Purchase
 import nz.co.afleet.taxisubscription.Constants
-import com.example.subscriptions.R
+import nz.co.afleet.taxisubscription.R
 import nz.co.afleet.taxisubscription.SubApp
 import nz.co.afleet.taxisubscription.billing.BillingClientLifecycle
 import com.firebase.ui.auth.AuthUI

@@ -23,7 +23,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.leanback.app.GuidedStepSupportFragment
 import androidx.leanback.widget.GuidanceStylist
 import androidx.leanback.widget.GuidedAction
-import com.example.subscriptions.R
+import nz.co.afleet.taxisubscription.R
 
 /**
  * Activity that displays QR codes that can be opened from a user's mobile phone
@@ -46,8 +46,8 @@ class TvManageSubscriptionsActivity : FragmentActivity() {
 
         // Hard-coded QR Codes containing URLs for managing subscriptions in Google Play
         // QR1: https://play.google.com/store/account/subscriptions
-        // QR2: https://play.google.com/store/account/subscriptions?sku=basic_subscription&package=com.example.subscriptions"
-        // QR3: https://play.google.com/store/account/subscriptions?sku=premium_subscription&package=com.example.subscriptions"
+        // QR2: https://play.google.com/store/account/subscriptions?sku=basic_subscription&package=nz.co.afleet.taxisubscription"
+        // QR3: https://play.google.com/store/account/subscriptions?sku=premium_subscription&package=nz.co.afleet.taxisubscription"
         private val OPTION_DRAWABLES = intArrayOf(
             R.drawable.qr_code_playstore_subscription,
             R.drawable.qr_code_basic_subscription,

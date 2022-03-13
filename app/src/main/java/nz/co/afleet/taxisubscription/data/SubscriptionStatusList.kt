@@ -19,6 +19,4 @@ package nz.co.afleet.taxisubscription.data
 /**
  * Used to parse through a list of [SubscriptionStatus] HTTP response objects.
  */
-data class SubscriptionStatusList(var subscriptions: List<SubscriptionStatus>?) {
-
-}
+data class SubscriptionStatusList(var subscriptions: List<SubscriptionStatus>?)

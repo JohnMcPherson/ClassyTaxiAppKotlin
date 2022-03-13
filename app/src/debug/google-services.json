@@ -1,53 +1,39 @@
 {
-  "_comment": "TODO, replace this file with your own version",
   "project_info": {
-    "project_number": "TODO:Add your project number here",
-    "project_id": "TODO: add your project id"
+    "project_number": "578026604482",
+    "project_id": "taxisubscriptions",
+    "storage_bucket": "taxisubscriptions.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1234567890:android:321abc456def7890",
+        "mobilesdk_app_id": "1:578026604482:android:64360a4947fd2bd851b85b",
         "android_client_info": {
-          "package_name": "com.example.subscriptions.classytaxi"
+          "package_name": "nz.co.afleet.taxisubscription"
         }
       },
       "oauth_client": [
         {
-          "client_id": "",
+          "client_id": "578026604482-lc3r7b0sifdu712r47akpm6rseotphg9.apps.googleusercontent.com",
           "client_type": 3
-        },
-        {
-          "client_id": "",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.subscriptions",
-            "certificate_hash": ""
-          }
         }
       ],
       "api_key": [
         {
-          "current_key": "TODO: Add your key"
+          "current_key": "AIzaSyBCr1nupkvdMz5K84RIFF9Hb67mNgrdpCU"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 2,
-          "analytics_property": {
-            "tracking_id": ""
-          }
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 1
+          "other_platform_oauth_client": [
+            {
+              "client_id": "578026604482-lc3r7b0sifdu712r47akpm6rseotphg9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
   ],
   "configuration_version": "1"
 }
-

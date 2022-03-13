@@ -30,7 +30,7 @@ class SubscriptionMessageService : FirebaseMessagingService() {
         remoteMessage.data.let { it ->
             val data = it
             if (data.isNotEmpty()) {
-                var result: SubscriptionStatusList? = null;
+                var result: SubscriptionStatusList? = null
                 if (REMOTE_MESSAGE_SUBSCRIPTIONS_KEY in data) {
                     result = gson.fromJson(
                         data[REMOTE_MESSAGE_SUBSCRIPTIONS_KEY],

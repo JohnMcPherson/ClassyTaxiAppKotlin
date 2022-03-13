@@ -24,10 +24,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.example.subscriptions.R
-import com.example.subscriptions.databinding.FragmentHomeBinding
-import com.example.subscriptions.databinding.FragmentPremiumBinding
-import com.example.subscriptions.databinding.FragmentSettingsBinding
+import nz.co.afleet.taxisubscription.R
+import nz.co.afleet.taxisubscription.databinding.FragmentHomeBinding
+import nz.co.afleet.taxisubscription.databinding.FragmentPremiumBinding
+import nz.co.afleet.taxisubscription.databinding.FragmentSettingsBinding
 
 /**
  * [Fragment] for Home, Premium, and Settings tabs.
