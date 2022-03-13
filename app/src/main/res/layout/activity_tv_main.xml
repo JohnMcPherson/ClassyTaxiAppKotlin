@@ -18,6 +18,6 @@
 <fragment
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_frame"
-    android:name="com.example.subscriptions.ui.TvMainFragment"
+    android:name="nz.co.afleet.taxisubscription.ui.TvMainFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />

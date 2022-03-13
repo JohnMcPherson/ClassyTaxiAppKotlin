@@ -21,9 +21,9 @@
 
     <data>
         <variable name="billingViewModel"
-            type="com.example.subscriptions.ui.BillingViewModel"/>
+            type="nz.co.afleet.taxisubscription.ui.BillingViewModel"/>
         <variable name="subscriptionViewModel"
-            type="com.example.subscriptions.ui.SubscriptionStatusViewModel"/>
+            type="nz.co.afleet.taxisubscription.ui.SubscriptionStatusViewModel"/>
     </data>
 
     <ScrollView
