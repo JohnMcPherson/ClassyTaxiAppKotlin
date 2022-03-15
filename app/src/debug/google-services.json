@@ -1,33 +1,108 @@
 {
   "project_info": {
-    "project_number": "578026604482",
-    "project_id": "taxisubscriptions",
-    "storage_bucket": "taxisubscriptions.appspot.com"
+    "project_number": "380141657596",
+    "firebase_url": "https://afleet-scoring.firebaseio.com",
+    "project_id": "afleet-scoring",
+    "storage_bucket": "afleet-scoring.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:578026604482:android:64360a4947fd2bd851b85b",
+        "mobilesdk_app_id": "1:380141657596:android:54cd5f07295cc91e23a679",
         "android_client_info": {
-          "package_name": "nz.co.afleet.taxisubscription"
+          "package_name": "academy.learnprogramming.johnm"
         }
       },
       "oauth_client": [
         {
-          "client_id": "578026604482-lc3r7b0sifdu712r47akpm6rseotphg9.apps.googleusercontent.com",
+          "client_id": "380141657596-m2jmk99i9i9mj20prvju8c7lmlc6377e.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBCr1nupkvdMz5K84RIFF9Hb67mNgrdpCU"
+          "current_key": "AIzaSyDVwwf8LcM9ACDoUoWwWDcreq4UbRrMuuk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "578026604482-lc3r7b0sifdu712r47akpm6rseotphg9.apps.googleusercontent.com",
+              "client_id": "380141657596-m2jmk99i9i9mj20prvju8c7lmlc6377e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380141657596:android:2e2c3c5fd2121679",
+        "android_client_info": {
+          "package_name": "nz.co.afleet.afleet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380141657596-4gi5ihha45q3a2j0a8nd143rb7kctil0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nz.co.afleet.afleet",
+            "certificate_hash": "74591053fb59de2a72d10fdf1a6226e4e23bb817"
+          }
+        },
+        {
+          "client_id": "380141657596-7hh1e2kla40pn0hmusbneki4qlige8fa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nz.co.afleet.afleet",
+            "certificate_hash": "4e2809b742f6a6e7b40dfc3f063057b6412e29a6"
+          }
+        },
+        {
+          "client_id": "380141657596-m2jmk99i9i9mj20prvju8c7lmlc6377e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVwwf8LcM9ACDoUoWwWDcreq4UbRrMuuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380141657596-m2jmk99i9i9mj20prvju8c7lmlc6377e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380141657596:android:537cb008c8a6d33a23a679",
+        "android_client_info": {
+          "package_name": "nz.co.afleet.classytaxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380141657596-m2jmk99i9i9mj20prvju8c7lmlc6377e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVwwf8LcM9ACDoUoWwWDcreq4UbRrMuuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380141657596-m2jmk99i9i9mj20prvju8c7lmlc6377e.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
