@@ -24,7 +24,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.subscriptions.ui.MainActivity">
+    tools:context="nz.co.afleet.classytaxi.ui.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"

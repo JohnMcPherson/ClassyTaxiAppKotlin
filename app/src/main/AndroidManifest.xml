@@ -16,7 +16,7 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.subscriptions">
+    package="nz.co.afleet.classytaxi">
 
     <uses-permission android:name="com.android.vending.BILLING" />
 
@@ -24,7 +24,7 @@
     <uses-feature android:name="android.software.leanback" android:required="false" />
 
     <application
-        android:name=".SubApp"
+        android:name="nz.co.afleet.classytaxi.SubApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -37,7 +37,7 @@
         <meta-data android:name="google_analytics_adid_collection_enabled" android:value="false" />
 
         <activity
-            android:name=".ui.MainActivity"
+            android:name="nz.co.afleet.classytaxi.ui.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -47,7 +47,7 @@
         </activity>
 
         <activity
-            android:name=".ui.TvMainActivity"
+            android:name="nz.co.afleet.classytaxi.ui.TvMainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.Leanback.Details.NoSharedElementTransition">
             <intent-filter>
@@ -57,11 +57,11 @@
         </activity>
 
         <activity
-            android:name=".ui.TvManageSubscriptionsActivity"
+            android:name="nz.co.afleet.classytaxi.ui.TvManageSubscriptionsActivity"
             android:theme="@style/Theme.Leanback.GuidedStep" />
 
         <service
-            android:name=".FcmRegistrationTokenService"
+            android:name="nz.co.afleet.classytaxi.FcmRegistrationTokenService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
@@ -69,7 +69,7 @@
         </service>
 
         <service
-            android:name=".data.network.firebase.SubscriptionMessageService"
+            android:name="nz.co.afleet.classytaxi.data.network.firebase.SubscriptionMessageService"
             android:exported="true"
             tools:ignore="ExportedService">
             <intent-filter>
