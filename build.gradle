@@ -43,7 +43,7 @@ ext {
     keystoreKeyPassword = keystoreProperties['keyPassword']
 
     // Android version information.
-    androidMinimumSdkVersion = 17
+    androidMinimumSdkVersion = 21
     androidTargetSdkVersion = 30
     androidCompileSdkVersion = 30
 }
