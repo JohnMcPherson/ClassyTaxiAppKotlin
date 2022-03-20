@@ -34,8 +34,8 @@ import com.android.billingclient.api.PurchasesUpdatedListener
 import com.android.billingclient.api.SkuDetails
 import com.android.billingclient.api.SkuDetailsParams
 import com.android.billingclient.api.SkuDetailsResponseListener
-import nz.co.afleet.classytaxi.Constants
 import nz.co.afleet.classytaxi.ui.SingleLiveEvent
+import nz.co.afleet.classytaxi.Constants
 
 class BillingClientLifecycle private constructor(
         private val app: Application
@@ -72,17 +72,19 @@ class BillingClientLifecycle private constructor(
         )
 
         @Volatile
-        private var INSTANCE: BillingClientLifecycle? = null
+        private var INSTANCE: nz.co.afleet.classytaxi.billing.BillingClientLifecycle? = null
 
-        fun getInstance(app: Application): BillingClientLifecycle =
-                INSTANCE ?: synchronized(this) {
-                    INSTANCE ?: BillingClientLifecycle(app).also { INSTANCE = it }
+        fun getInstance(app: Application): nz.co.afleet.classytaxi.billing.BillingClientLifecycle =
+                nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.INSTANCE ?: synchronized(this) {
+                    nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.INSTANCE
+                        ?: nz.co.afleet.classytaxi.billing.BillingClientLifecycle(app)
+                            .also { nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.INSTANCE = it }
                 }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun create() {
-        Log.d(TAG, "ON_CREATE")
+        Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "ON_CREATE")
         // Create a new BillingClient in onCreate().
         // Since the BillingClient can only be used once, we need to create a new instance
         // after ending the previous connection to the Google Play Store in onDestroy().
@@ -91,16 +93,16 @@ class BillingClientLifecycle private constructor(
                 .enablePendingPurchases() // Not used for subscriptions.
                 .build()
         if (!billingClient.isReady) {
-            Log.d(TAG, "BillingClient: Start connection...")
+            Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "BillingClient: Start connection...")
             billingClient.startConnection(this)
         }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun destroy() {
-        Log.d(TAG, "ON_DESTROY")
+        Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "ON_DESTROY")
         if (billingClient.isReady) {
-            Log.d(TAG, "BillingClient can only be used once -- closing connection")
+            Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "BillingClient can only be used once -- closing connection")
             // BillingClient can only be used once.
             // After calling endConnection(), we must create a new BillingClient.
             billingClient.endConnection()
@@ -110,7 +112,7 @@ class BillingClientLifecycle private constructor(
     override fun onBillingSetupFinished(billingResult: BillingResult) {
         val responseCode = billingResult.responseCode
         val debugMessage = billingResult.debugMessage
-        Log.d(TAG, "onBillingSetupFinished: $responseCode $debugMessage")
+        Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "onBillingSetupFinished: $responseCode $debugMessage")
         if (responseCode == BillingClient.BillingResponseCode.OK) {
             // The billing client is ready. You can query purchases here.
             querySkuDetails()
@@ -119,7 +121,7 @@ class BillingClientLifecycle private constructor(
     }
 
     override fun onBillingServiceDisconnected() {
-        Log.d(TAG, "onBillingServiceDisconnected")
+        Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "onBillingServiceDisconnected")
         // TODO: Try connecting again with exponential backoff.
         // billingClient.startConnection(this)
     }
@@ -129,13 +131,13 @@ class BillingClientLifecycle private constructor(
      * This is an asynchronous call that will receive a result in [onSkuDetailsResponse].
      */
     private fun querySkuDetails() {
-        Log.d(TAG, "querySkuDetails")
+        Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "querySkuDetails")
         val params = SkuDetailsParams.newBuilder()
                 .setType(BillingClient.SkuType.SUBS)
-                .setSkusList(LIST_OF_SKUS)
+                .setSkusList(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.LIST_OF_SKUS)
                 .build()
         params.let { skuDetailsParams ->
-            Log.i(TAG, "querySkuDetailsAsync")
+            Log.i(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "querySkuDetailsAsync")
             billingClient.querySkuDetailsAsync(skuDetailsParams, this)
         }
     }
@@ -153,12 +155,12 @@ class BillingClientLifecycle private constructor(
         val debugMessage = billingResult.debugMessage
         when (responseCode) {
             BillingClient.BillingResponseCode.OK -> {
-                Log.i(TAG, "onSkuDetailsResponse: $responseCode $debugMessage")
-                val expectedSkuDetailsCount = LIST_OF_SKUS.size
+                Log.i(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "onSkuDetailsResponse: $responseCode $debugMessage")
+                val expectedSkuDetailsCount = nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.LIST_OF_SKUS.size
                 if (skuDetailsList == null) {
                     skusWithSkuDetails.postValue(emptyMap())
                     Log.e(
-                        TAG, "onSkuDetailsResponse: " +
+                        nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "onSkuDetailsResponse: " +
                             "Expected ${expectedSkuDetailsCount}, " +
                             "Found null SkuDetails. " +
                             "Check to see if the SKUs you requested are correctly published " +
@@ -171,10 +173,10 @@ class BillingClientLifecycle private constructor(
                     }.also { postedValue ->
                         val skuDetailsCount = postedValue.size
                         if (skuDetailsCount == expectedSkuDetailsCount) {
-                            Log.i(TAG, "onSkuDetailsResponse: Found $skuDetailsCount SkuDetails")
+                            Log.i(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "onSkuDetailsResponse: Found $skuDetailsCount SkuDetails")
                         } else {
                             Log.e(
-                                TAG, "onSkuDetailsResponse: " +
+                                nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "onSkuDetailsResponse: " +
                                     "Expected ${expectedSkuDetailsCount}, " +
                                     "Found $skuDetailsCount SkuDetails. " +
                                     "Check to see if the SKUs you requested are correctly published " +
@@ -188,14 +190,14 @@ class BillingClientLifecycle private constructor(
             BillingClient.BillingResponseCode.ITEM_UNAVAILABLE,
             BillingClient.BillingResponseCode.DEVELOPER_ERROR,
             BillingClient.BillingResponseCode.ERROR -> {
-                Log.e(TAG, "onSkuDetailsResponse: $responseCode $debugMessage")
+                Log.e(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "onSkuDetailsResponse: $responseCode $debugMessage")
             }
             BillingClient.BillingResponseCode.USER_CANCELED,
             BillingClient.BillingResponseCode.FEATURE_NOT_SUPPORTED,
             BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED,
             BillingClient.BillingResponseCode.ITEM_NOT_OWNED -> {
                 // These response codes are not expected.
-                Log.wtf(TAG, "onSkuDetailsResponse: $responseCode $debugMessage")
+                Log.wtf(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "onSkuDetailsResponse: $responseCode $debugMessage")
             }
         }
     }
@@ -208,9 +210,9 @@ class BillingClientLifecycle private constructor(
      */
     fun queryPurchases() {
         if (!billingClient.isReady) {
-            Log.e(TAG, "queryPurchases: BillingClient is not ready")
+            Log.e(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "queryPurchases: BillingClient is not ready")
         }
-        Log.d(TAG, "queryPurchases: SUBS")
+        Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "queryPurchases: SUBS")
         billingClient.queryPurchasesAsync(BillingClient.SkuType.SUBS, this)
     }
 
@@ -230,25 +232,25 @@ class BillingClientLifecycle private constructor(
             purchases: MutableList<Purchase>?) {
         val responseCode = billingResult.responseCode
         val debugMessage = billingResult.debugMessage
-        Log.d(TAG, "onPurchasesUpdated: $responseCode $debugMessage")
+        Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "onPurchasesUpdated: $responseCode $debugMessage")
         when (responseCode) {
             BillingClient.BillingResponseCode.OK -> {
                 if (purchases == null) {
-                    Log.d(TAG, "onPurchasesUpdated: null purchase list")
+                    Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "onPurchasesUpdated: null purchase list")
                     processPurchases(null)
                 } else {
                     processPurchases(purchases)
                 }
             }
             BillingClient.BillingResponseCode.USER_CANCELED -> {
-                Log.i(TAG, "onPurchasesUpdated: User canceled the purchase")
+                Log.i(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "onPurchasesUpdated: User canceled the purchase")
             }
             BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED -> {
-                Log.i(TAG, "onPurchasesUpdated: The user already owns this item")
+                Log.i(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "onPurchasesUpdated: The user already owns this item")
             }
             BillingClient.BillingResponseCode.DEVELOPER_ERROR -> {
                 Log.e(
-                    TAG, "onPurchasesUpdated: Developer error means that Google Play " +
+                    nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "onPurchasesUpdated: Developer error means that Google Play " +
                         "does not recognize the configuration. If you are just getting started, " +
                         "make sure you have configured the application correctly in the " +
                         "Google Play Console. The SKU product ID must match and the APK you " +
@@ -265,9 +267,9 @@ class BillingClientLifecycle private constructor(
      * The LiveData will allow Google Play settings UI to update based on the latest purchase data.
      */
     private fun processPurchases(purchasesList: List<Purchase>?) {
-        Log.d(TAG, "processPurchases: ${purchasesList?.size} purchase(s)")
+        Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "processPurchases: ${purchasesList?.size} purchase(s)")
         if (isUnchangedPurchaseList(purchasesList)) {
-            Log.d(TAG, "processPurchases: Purchase list has not changed")
+            Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "processPurchases: Purchase list has not changed")
             return
         }
         purchaseUpdateEvent.postValue(purchasesList)
@@ -305,7 +307,7 @@ class BillingClientLifecycle private constructor(
                 ack_no++
             }
         }
-        Log.d(TAG, "logAcknowledgementStatus: acknowledged=$ack_yes unacknowledged=$ack_no")
+        Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "logAcknowledgementStatus: acknowledged=$ack_yes unacknowledged=$ack_no")
     }
 
     /**
@@ -315,12 +317,12 @@ class BillingClientLifecycle private constructor(
      */
     fun launchBillingFlow(activity: Activity, params: BillingFlowParams): Int {
         if (!billingClient.isReady) {
-            Log.e(TAG, "launchBillingFlow: BillingClient is not ready")
+            Log.e(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "launchBillingFlow: BillingClient is not ready")
         }
         val billingResult = billingClient.launchBillingFlow(activity, params)
         val responseCode = billingResult.responseCode
         val debugMessage = billingResult.debugMessage
-        Log.d(TAG, "launchBillingFlow: BillingResponse $responseCode $debugMessage")
+        Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "launchBillingFlow: BillingResponse $responseCode $debugMessage")
         return responseCode
     }
 
@@ -346,14 +348,14 @@ class BillingClientLifecycle private constructor(
      * that they paid for something that the app is not giving to them.
      */
     fun acknowledgePurchase(purchaseToken: String) {
-        Log.d(TAG, "acknowledgePurchase")
+        Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "acknowledgePurchase")
         val params = AcknowledgePurchaseParams.newBuilder()
                 .setPurchaseToken(purchaseToken)
                 .build()
         billingClient.acknowledgePurchase(params) { billingResult ->
             val responseCode = billingResult.responseCode
             val debugMessage = billingResult.debugMessage
-            Log.d(TAG, "acknowledgePurchase: $responseCode $debugMessage")
+            Log.d(nz.co.afleet.classytaxi.billing.BillingClientLifecycle.Companion.TAG, "acknowledgePurchase: $responseCode $debugMessage")
         }
     }
 }

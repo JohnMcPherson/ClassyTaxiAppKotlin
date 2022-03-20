@@ -17,9 +17,9 @@
 package nz.co.afleet.classytaxi.data.network
 
 import androidx.lifecycle.LiveData
-import nz.co.afleet.classytaxi.AppExecutors
 import nz.co.afleet.classytaxi.data.SubscriptionStatus
 import nz.co.afleet.classytaxi.data.network.firebase.ServerFunctions
+import nz.co.afleet.classytaxi.AppExecutors
 import java.util.concurrent.Executor
 
 /**

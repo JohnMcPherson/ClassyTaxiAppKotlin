@@ -17,8 +17,8 @@
 package nz.co.afleet.classytaxi.billing
 
 import com.android.billingclient.api.Purchase
-import nz.co.afleet.classytaxi.Constants
 import nz.co.afleet.classytaxi.data.SubscriptionStatus
+import nz.co.afleet.classytaxi.Constants
 
 /**
  * Return subscription for the provided SKU, if it exists.

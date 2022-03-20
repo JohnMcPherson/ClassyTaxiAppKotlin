@@ -17,12 +17,12 @@
 package nz.co.afleet.classytaxi.data.network.firebase
 
 import android.util.Log
-import nz.co.afleet.classytaxi.SubApp
 import nz.co.afleet.classytaxi.data.SubscriptionStatusList
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import nz.co.afleet.classytaxi.SubApp
 
 class SubscriptionMessageService : FirebaseMessagingService() {
     private val gson: Gson = GsonBuilder().create()
@@ -30,7 +30,7 @@ class SubscriptionMessageService : FirebaseMessagingService() {
         remoteMessage.data.let { it ->
             val data = it
             if (data.isNotEmpty()) {
-                var result: SubscriptionStatusList? = null
+                var result: SubscriptionStatusList? = null;
                 if (REMOTE_MESSAGE_SUBSCRIPTIONS_KEY in data) {
                     result = gson.fromJson(
                         data[REMOTE_MESSAGE_SUBSCRIPTIONS_KEY],

@@ -23,11 +23,10 @@ import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
 import com.android.billingclient.api.Purchase
-import nz.co.afleet.classytaxi.Constants
 import nz.co.afleet.classytaxi.R
-import nz.co.afleet.classytaxi.SubApp
-import nz.co.afleet.classytaxi.billing.BillingClientLifecycle
 import com.firebase.ui.auth.AuthUI
+import nz.co.afleet.classytaxi.Constants
+import nz.co.afleet.classytaxi.SubApp
 
 /**
  * TvMainActivity contains a TvMainFragment that leverages Leanback UI to build an optimized
@@ -43,7 +42,7 @@ class TvMainActivity : FragmentActivity() {
         private const val RC_SIGN_IN = 0
     }
 
-    private lateinit var billingClientLifecycle: BillingClientLifecycle
+    private lateinit var billingClientLifecycle: nz.co.afleet.classytaxi.billing.BillingClientLifecycle
 
     private lateinit var authenticationViewModel: FirebaseUserViewModel
     private lateinit var billingViewModel: BillingViewModel

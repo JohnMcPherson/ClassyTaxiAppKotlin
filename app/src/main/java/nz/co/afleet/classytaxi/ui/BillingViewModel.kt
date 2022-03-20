@@ -21,13 +21,13 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import com.android.billingclient.api.BillingFlowParams
 import com.android.billingclient.api.Purchase
-import nz.co.afleet.classytaxi.Constants
-import nz.co.afleet.classytaxi.SubApp
 import nz.co.afleet.classytaxi.billing.deviceHasGooglePlaySubscription
 import nz.co.afleet.classytaxi.billing.purchaseForSku
 import nz.co.afleet.classytaxi.billing.serverHasSubscription
 import nz.co.afleet.classytaxi.billing.subscriptionForSku
 import nz.co.afleet.classytaxi.data.SubscriptionStatus
+import nz.co.afleet.classytaxi.Constants
+import nz.co.afleet.classytaxi.SubApp
 
 class BillingViewModel(application: Application) : AndroidViewModel(application) {
 

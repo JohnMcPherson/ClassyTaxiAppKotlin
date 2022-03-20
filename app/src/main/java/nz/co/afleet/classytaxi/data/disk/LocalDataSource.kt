@@ -16,9 +16,9 @@
 
 package nz.co.afleet.classytaxi.data.disk
 
-import nz.co.afleet.classytaxi.AppExecutors
 import nz.co.afleet.classytaxi.data.SubscriptionStatus
 import nz.co.afleet.classytaxi.data.disk.db.AppDatabase
+import nz.co.afleet.classytaxi.AppExecutors
 import java.util.concurrent.Executor
 
 class LocalDataSource private constructor(

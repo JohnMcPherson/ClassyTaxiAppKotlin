@@ -17,11 +17,11 @@
 package nz.co.afleet.classytaxi.data.network.firebase
 
 import androidx.lifecycle.MutableLiveData
-import nz.co.afleet.classytaxi.Constants
 import nz.co.afleet.classytaxi.billing.isBasicContent
 import nz.co.afleet.classytaxi.billing.isPremiumContent
 import nz.co.afleet.classytaxi.data.ContentResource
 import nz.co.afleet.classytaxi.data.SubscriptionStatus
+import nz.co.afleet.classytaxi.Constants
 
 /**
  * Fake implementation of [ServerFunctions].

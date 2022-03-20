@@ -28,14 +28,13 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.ViewModelProviders
 import com.android.billingclient.api.Purchase
-import nz.co.afleet.classytaxi.Constants
 import nz.co.afleet.classytaxi.R
-import nz.co.afleet.classytaxi.SubApp
-import nz.co.afleet.classytaxi.billing.BillingClientLifecycle
 import com.firebase.ui.auth.AuthUI
 import com.google.android.material.tabs.TabLayout
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_main.*
+import nz.co.afleet.classytaxi.Constants
+import nz.co.afleet.classytaxi.SubApp
 
 /**
  * [MainActivity] contains 3 [TabFragment] objects.
@@ -60,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         private const val COUNT = 3
     }
 
-    private lateinit var billingClientLifecycle: BillingClientLifecycle
+    private lateinit var billingClientLifecycle: nz.co.afleet.classytaxi.billing.BillingClientLifecycle
     private lateinit var sectionsPagerAdapter: SectionsPagerAdapter
 
     private lateinit var authenticationViewModel: FirebaseUserViewModel

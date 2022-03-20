@@ -18,7 +18,6 @@ package nz.co.afleet.classytaxi
 
 import android.app.Application
 import nz.co.afleet.classytaxi.Constants.Companion.USE_FAKE_SERVER
-import nz.co.afleet.classytaxi.billing.BillingClientLifecycle
 import nz.co.afleet.classytaxi.data.DataRepository
 import nz.co.afleet.classytaxi.data.disk.LocalDataSource
 import nz.co.afleet.classytaxi.data.disk.db.AppDatabase
@@ -51,8 +50,8 @@ class SubApp : Application() {
     private val webDataSource: WebDataSource
         get() = WebDataSource.getInstance(executors, serverFunctions)
 
-    val billingClientLifecycle: BillingClientLifecycle
-        get() = BillingClientLifecycle.getInstance(this)
+    val billingClientLifecycle: nz.co.afleet.classytaxi.billing.BillingClientLifecycle
+        get() = nz.co.afleet.classytaxi.billing.BillingClientLifecycle.getInstance(this)
 
     val repository: DataRepository
         get() = DataRepository.getInstance(localDataSource, webDataSource, billingClientLifecycle)

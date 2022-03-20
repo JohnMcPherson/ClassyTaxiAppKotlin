@@ -190,10 +190,10 @@ class ServerFunctionsImpl : ServerFunctions {
 
 // Helper functions
     /**
-     * Inserts or updates the subscription to the list of existing nz.co.afleet.taxisubscription.
+     * Inserts or updates the subscription to the list of existing nz.co.afleet.classytaxi.
      *
      *
-     * If none of the existing nz.co.afleet.taxisubscription have a SKU that matches, insert this SKU.
+     * If none of the existing nz.co.afleet.classytaxi have a SKU that matches, insert this SKU.
      * If a subscription exists with the matching SKU, the output list will contain the new
      * subscription instead of the old subscription.
      */

@@ -21,8 +21,8 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
-import nz.co.afleet.classytaxi.Constants
 import nz.co.afleet.classytaxi.R
+import nz.co.afleet.classytaxi.billing.*
 import nz.co.afleet.classytaxi.data.ContentResource
 import nz.co.afleet.classytaxi.data.SubscriptionStatus
 import nz.co.afleet.classytaxi.utils.basicTextForSubscription
@@ -30,7 +30,7 @@ import nz.co.afleet.classytaxi.utils.premiumTextForSubscription
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_premium.view.*
 import kotlinx.android.synthetic.main.fragment_settings.view.*
-import nz.co.afleet.classytaxi.billing.*
+import nz.co.afleet.classytaxi.Constants
 import java.text.SimpleDateFormat
 import java.util.*
 

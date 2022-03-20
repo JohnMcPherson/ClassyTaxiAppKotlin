@@ -20,10 +20,10 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import nz.co.afleet.classytaxi.SubApp
-import nz.co.afleet.classytaxi.data.SubscriptionStatus
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
+import nz.co.afleet.classytaxi.SubApp
+import nz.co.afleet.classytaxi.data.SubscriptionStatus
 
 class SubscriptionStatusViewModel(application: Application) : AndroidViewModel(application) {
 

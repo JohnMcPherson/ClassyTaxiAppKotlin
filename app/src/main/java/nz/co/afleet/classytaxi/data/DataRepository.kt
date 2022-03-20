@@ -20,10 +20,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import com.android.billingclient.api.Purchase
-import nz.co.afleet.classytaxi.Constants
-import nz.co.afleet.classytaxi.billing.BillingClientLifecycle
 import nz.co.afleet.classytaxi.data.disk.LocalDataSource
 import nz.co.afleet.classytaxi.data.network.WebDataSource
+import nz.co.afleet.classytaxi.Constants
 
 /**
  * Repository handling the work with subscriptions.
@@ -31,7 +30,7 @@ import nz.co.afleet.classytaxi.data.network.WebDataSource
 class DataRepository private constructor(
     private val localDataSource: LocalDataSource,
     private val webDataSource: WebDataSource,
-    private val billingClientLifecycle: BillingClientLifecycle
+    private val billingClientLifecycle: nz.co.afleet.classytaxi.billing.BillingClientLifecycle
 ) {
 
     /**
@@ -297,7 +296,7 @@ class DataRepository private constructor(
         fun getInstance(
             localDataSource: LocalDataSource,
             webDataSource: WebDataSource,
-            billingClientLifecycle: BillingClientLifecycle
+            billingClientLifecycle: nz.co.afleet.classytaxi.billing.BillingClientLifecycle
         ): DataRepository =
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: DataRepository(localDataSource, webDataSource, billingClientLifecycle)
