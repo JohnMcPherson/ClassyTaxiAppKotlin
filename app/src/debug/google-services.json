@@ -89,6 +89,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "380141657596-oo036bi74jnnt9b06q70bkdqlegivblc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nz.co.afleet.classytaxi",
+            "certificate_hash": "fa0bb68acd6442dad80ff751cab6f9fbc27c3f96"
+          }
+        },
+        {
           "client_id": "380141657596-m2jmk99i9i9mj20prvju8c7lmlc6377e.apps.googleusercontent.com",
           "client_type": 3
         }
